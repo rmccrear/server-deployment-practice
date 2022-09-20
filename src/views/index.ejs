@@ -16,7 +16,7 @@
     const loadFarms = async ()=>{
             const farms = await getFarms();
             console.log(farms)
-            return farms.map(formatFarm).map(li);
+            return farms.map(formatFarm).map(li).join("\n");
     }
 </script>
 </head>
