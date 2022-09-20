@@ -2,6 +2,7 @@
 <html>
 <head>
 <title><%= title  %></title>
+<link rel="stylesheet" href="https://unpkg.com/bootstrap@5.2.1/dist/css/bootstrap.css">
 <script>
     const getFarms = async () => {
         return (await axios.get('/api/v1/farms/organic')).data;
@@ -16,7 +17,7 @@
     const loadFarms = async ()=>{
             const farms = await getFarms();
             console.log(farms)
-            return farms.map(formatFarm).map(li);
+            return farms.map(formatFarm).map(li).join("\n");
     }
 </script>
 </head>
@@ -24,10 +25,12 @@
 <body>
 <script src="//unpkg.com/axios"></script>
 <script src="//unpkg.com/alpinejs"></script>
+<div class="container">
     <h1> Organic Farms near New Taipei </h1>
     <div x-html="await loadFarms()">
-  ...
+  ...Loading...
     </div>
+</div>
 </body>
 
 </html>
